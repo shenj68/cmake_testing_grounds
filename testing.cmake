@@ -16,7 +16,6 @@ else()
     set(ubuntu_flag 0)
 endif()
 
-
 # WSLFlag
 if ( CMAKE_HOST_SYSTEM_VERSION MATCHES "microsoft-standard-WSL2" OR CMAKE_HOST_SYSTEM_VERSION MATCHES "microsoft-standard-WSL") 
     set(wsl_flag 1)
@@ -25,7 +24,6 @@ else()
     set(wsl_flag 0)
     #message("wsl_flag: ${wsl_flag}")
 endif()
-
 
 # Linux Flag
 if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
@@ -36,7 +34,6 @@ else()
     #message("linux_flag: ${linux_flag}")
 endif()
 
-
 # JetsonFlag/Tegra Devices
 if (CMAKE_HOST_SYSTEM_VERSION MATCHES "tegra" AND EXISTS "${ROOT}/etc/nv_tegra_release")
     set(jetson_flag 1)
@@ -45,7 +42,6 @@ else()
     set(jetson_flag 0)
     #message("jetson_flag: ${jetson_flag}")
 endif()
-
 
 # WindowsFlag
 if (CMAKE_HOST_SYSTEM_NAME MATCHES "Windows" AND CMAKE_HOST_SYSTEM_VERSION MATCHES "10.0")
@@ -66,7 +62,6 @@ if( (wsl_flag MATCHES 1)
     message(STATUS "[PORTFILE] - WSL Detected")
 endif()
 
-
 # [Linux + Ubuntu] - Supported
 if( (wsl_flag MATCHES 0) 
     AND (linux_flag MATCHES 1) 
@@ -75,7 +70,6 @@ if( (wsl_flag MATCHES 0)
     AND (windows_flag MATCHES 0) )
     message(STATUS "[PORTFILE] - Linux + Ubuntu Machine Detected")
 endif()
-
 
 # [Nvidia Devices] - Supported
 if( (wsl_flag MATCHES 0) 
@@ -86,7 +80,6 @@ if( (wsl_flag MATCHES 0)
     message(STATUS "[PORTFILE] - Nvidia Jetson Device Detected")
 endif()
 
-
 # [Windows Devices] - Not Supported
 if( (wsl_flag MATCHES 0) 
     AND (linux_flag MATCHES 0)
@@ -96,7 +89,6 @@ if( (wsl_flag MATCHES 0)
     message(STATUS "[PORTFILE] - Windows Detected")
     message(FATAL_ERROR "[PORTFILE] - !!! WINDOWS NOT SUPPORTED, ABORTING... !!!")
 endif()
-
 
 # Not Currently Supported
 if( (wsl_flag MATCHES 0) 
